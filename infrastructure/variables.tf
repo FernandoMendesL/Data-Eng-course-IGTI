@@ -9,3 +9,7 @@ variable "env" {
 variable "account_num" {
   default = "105396593195"
 }
+
+variable "aws_region" {
+  default = "us-east-2"
+}
