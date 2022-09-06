@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     name: Test on Datalake
-    runs-on: ububtu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1.2.1
 
     - name: Confugure AWS Credentials
-      uses: aws-actions/configure-aws-credientials@v1
+      uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESSS_KEY }}
