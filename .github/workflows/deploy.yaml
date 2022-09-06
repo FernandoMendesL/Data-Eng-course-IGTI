@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     name: Deploy to Datalake
-    runs-on: ububtu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
