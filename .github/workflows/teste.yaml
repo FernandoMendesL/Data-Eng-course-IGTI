@@ -1,33 +1,33 @@
-name: Teste on PR
+name: Test on PR
 
 on:  
   pull_request:
     branches: [master]
 
 jobs:
-  test:
-    name: Test infra on PR
-    runs-on: ububtu-latest
+  deploy:
+    name: Test on Datalake
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Set up Python 3.8
-    - uses: actions/setup-python@v2
+      uses: actions/setup-python@v2
       with:
         python-version: 3.8
     
-    - name: Hashicorp = Setup Terraform
-    - uses: hashicorp/setup-terraform@v1.2.1
+    - name: Hashicorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v1.2.1
 
     - name: Confugure AWS Credentials
-    - uses: aws-actions/configure-aws-credientials@v1
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-      - aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      - aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESSS_KEY }}
-      - aws-region: us-east-2
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESSS_KEY }}
+        aws-region: us-east-2
   
-    - name: IaC Apply
+    - name: IaC Test
       env: 
         COMMAND_IAC: terraform
       run: |
